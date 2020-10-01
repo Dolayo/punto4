@@ -8,7 +8,7 @@ import turtlesim.srv
 from punto4.srv import start_turtlesim_snake
 
 def handler(req):
-
+    global flag
     spawner(req.x, req.y, req.theta, turtle_name)
     while not rospy.is_shutdown():
         try:
@@ -34,7 +34,6 @@ def handler(req):
 
 
         rate.sleep()
-
     return True
 
 if __name__ == '__main__':
@@ -55,6 +54,10 @@ if __name__ == '__main__':
     flag = False
 
     server = rospy.Service('start_turtlesim_snake', start_turtlesim_snake, handler)
+    rospy.spin()
+    
 
+    
 
+    
     
